@@ -1,7 +1,8 @@
-package com.example.elixir
+package com.example.assignmentone
 
-
+import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,6 +26,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
@@ -191,7 +193,7 @@ fun Register() {
                     readOnly = true,
                     value = selectedGender,
                     onValueChange = {},
-                    label = { Text("State") },
+                    label = { Text("Gender") },
                     //manages the arrow icon up and down
                     trailingIcon = {
                         ExposedDropdownMenuDefaults.TrailingIcon(expanded = isGenderBoxExpanded)
