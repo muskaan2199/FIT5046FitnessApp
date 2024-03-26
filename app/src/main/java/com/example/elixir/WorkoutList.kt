@@ -49,18 +49,21 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import coil.compose.AsyncImagePainter
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
 import coil.size.Size
 import com.example.elixir.data.model.Exercise
-
-
+import com.example.elixir.presentation.ExerciseTrackingViewModel
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Exercise(exercise: Exercise) {
+fun Exercise(
+    exercise: Exercise,
+    navHostController : NavHostController,
+    exerciseTrackingViewModel: ExerciseTrackingViewModel) {
 
         val imageState = rememberAsyncImagePainter(
             model = ImageRequest.Builder(LocalContext.current)
@@ -116,7 +119,9 @@ fun Exercise(exercise: Exercise) {
                 Row(modifier = Modifier.padding(8.dp)) {
 
                     Spacer(Modifier.weight(1f))
-                    Button(onClick = { }) {
+                    Button(onClick = {
+                        exerciseTrackingViewModel.setExercise(exercise)
+                        navHostController.navigate("workout_track")}) {
                         Text("Start")
                     }
                 }

@@ -73,12 +73,15 @@ import coil.request.ImageRequest
 import coil.size.Size
 import com.example.elixir.data.ExercisesRepositoryImpl
 import com.example.elixir.data.model.Exercise
+import com.example.elixir.presentation.ExerciseTrackingViewModel
 import com.example.elixir.presentation.ExercisesViewModel
 import com.example.elixir.ui.theme.ElixirTheme
 import kotlinx.coroutines.flow.collectLatest
 
 
 class MainActivity : ComponentActivity() {
+    private val trackingViewModel: ExerciseTrackingViewModel by viewModels()
+
     private val viewModel by viewModels<ExercisesViewModel>(factoryProducer = {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
@@ -140,6 +143,9 @@ class MainActivity : ComponentActivity() {
                         }
                         composable("workout_daily") {
                             WorkoutDailyScreen(navHostController = navHostController)
+                        }
+                        composable("workout_track") {
+                            ExerciseTracking(trackingViewModel)
                         }
                         composable("workout_list") {
                             val items = listOf(
@@ -259,7 +265,7 @@ class MainActivity : ComponentActivity() {
                                         contentPadding = PaddingValues(16.dp)
                                     ) {
                                         items(exerciseList.size) { index ->
-                                            Exercise(exerciseList[index])
+                                            Exercise(exerciseList[index], navHostController, trackingViewModel )
                                             Spacer(modifier = Modifier.height(16.dp))
 
                                         }
