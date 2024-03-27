@@ -1,5 +1,4 @@
-package com.example.elixir
-
+package com.example.assignmentone
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -84,6 +83,9 @@ fun Login() {
         ElevatedButton(onClick = {}, modifier = Modifier
             .padding(top = 20.dp)
             .fillMaxWidth()){ Text(text = "Sign in") }
+        ElevatedButton(onClick = {}, modifier = Modifier
+            .padding(top = 10.dp)
+            .fillMaxWidth()){ Text(text = "Sign in with Google Account") }
         Row(
             modifier = Modifier
                 .fillMaxWidth()
